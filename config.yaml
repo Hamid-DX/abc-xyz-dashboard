@@ -1,0 +1,19 @@
+credentials:
+  usernames:
+    admin:
+      email: hamid_dx@outlook.com
+      name: Hamid_admin
+      password: "$2b$12$enxyXXltu82c0hohJIsPt.X8y.Q7ZFu8krbdYOkzP/6MzNkFAKZUW"  # Hashed password
+    user1:
+      email: n.yafremau.mitsui@outlook.com
+      name: Nick_user
+      password: "$2b$12$qFbf28OuMIQHY.ObVkeFYO9LezGRfk5eOhLm4aSJlyvjEn2etbrRa"  # Hashed password
+
+cookie:
+  expiry_days: 30
+  key: "random_signature_key"
+  name: "my_cookie_name"
+
+preauthorized:
+  emails:
+    - a.shaat@mitsui.com
