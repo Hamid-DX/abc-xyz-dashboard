@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  streamlit-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: abc-xyz-dashboard
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1
+    stdin_open: true
+    tty: true
