@@ -48,10 +48,10 @@ def display_revenue_metrics(overall_revenue, segment_revenue, revenue_share):
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.metric(label="💰 Segment Revenue", value=f"${segment_revenue:,.2f}")
+        st.metric(label="💰 Segment Revenue [Local Currency]", value=f"{segment_revenue:,.2f}")
 
     with col2:
-        st.metric(label="🏦 Overall Revenue", value=f"${overall_revenue:,.2f}")
+        st.metric(label="🏦 Overall Revenue [Local Currency]", value=f"{overall_revenue:,.2f}")
 
     with col3:
-        st.metric(label="📊 Revenue Share", value=f"{revenue_share:.1f}%")
+        st.metric(label="📊 Revenue Share [Percentage]", value=f"{revenue_share:.1f}%")
