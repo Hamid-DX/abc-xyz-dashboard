@@ -1,7 +1,7 @@
 users:
   admin:
     name: ABC-XYZ Administrator
-    password: 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
+    password: 770af11df273e939c2df08985d1f70fef7043be420749e44cc6bc8b170638116
   kyosk:
-    name: ABC-XYZ Tester
-    password: 99efc50a9268ed2413a30f13f6ab8c31fd2b32ec1d3fb02273e5347e06473827
+    name: ABC-XYZ Kyosk
+    password: a6b64a395d75bc332a7c1388c4807bdf2435b8e0ff44bd2769c98f996c3b6855
