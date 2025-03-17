@@ -10,7 +10,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application files
 COPY app.py .
-COPY app_no_login.py .
 COPY config.yaml .
 COPY password_generator.py .
 
@@ -19,7 +18,7 @@ COPY password_generator.py .
 # RUN chmod 777 /app/data
 
 # Expose Streamlit port
-EXPOSE 8501
+# EXPOSE 8501
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
