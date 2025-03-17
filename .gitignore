@@ -1,5 +1,9 @@
 # Streamlit secrets
 .streamlit/secrets.toml
+secrets.toml
+
+# Password reference
+passwords.txt
 
 # Python
 __pycache__/
