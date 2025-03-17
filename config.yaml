@@ -1,8 +1,7 @@
 users:
   admin:
     name: ABC-XYZ Administrator
-    password: b0412597dcea813655574dc54a5b74967cf85317f0332a2591be7953a016f8de
-    email: n.yafremau.mitsui@outlook.com
-  tester:
+    password: 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
+  kyosk:
     name: ABC-XYZ Tester
-    password: 5cc32e366c87f11d1c03c3e6a0a37e1233ce6b9150324badfae1c5d94a873f32
+    password: 99efc50a9268ed2413a30f13f6ab8c31fd2b32ec1d3fb02273e5347e06473827
