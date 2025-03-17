@@ -12,16 +12,19 @@ This README provides instructions for setting up and running the ABC-XYZ Analysi
 Ensure your project directory has the following structure:
 
 ```
-project/
-├── app.py                 # Main application with authentication
-├── app_no_login.py        # Alternative application without login
-├── config.yaml            # Authentication configuration
-├── password_generator.py  # Utility for generating password hashes
-├── requirements.txt       # Python dependencies
+abc_xyz_dashboard/
+├── app.py                 # Main application entry point
+├── authentication.py      # Authentication related functions
+├── data_handler.py        # Data loading, validation and processing
+├── visualizations.py      # Chart creation and data visualization
+├── utils.py               # Utility functions
+├── config.yaml            # Config file (for development)
+├── generate_password_hash.py  # Password utility
+├── .streamlit/            # Streamlit configuration
+│   └── secrets.toml       # (gitignored) Secrets for cloud deployment
 ├── Dockerfile             # Docker configuration
-├── docker-compose.yml     # Docker Compose configuration
-└── data/
-    └── full__abc_xyz.csv  # Your data file
+├── docker-compose.yaml    # Docker Compose configuration
+└── requirements.txt       # Python dependencies
 ```
 
 ## Setup Instructions
