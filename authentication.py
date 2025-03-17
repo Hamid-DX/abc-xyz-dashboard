@@ -5,15 +5,7 @@ import hashlib
 import os
 
 def load_user_credentials():
-    """Load user credentials from config file or environment"""
-    # For Streamlit Cloud: Try to load from secrets
-    try:
-        if hasattr(st.secrets, "users"):
-            return st.secrets.users
-    except Exception:
-        pass
-    
-    # Local development: Load from config.yaml
+    """Load user credentials exclusively from config file"""
     config_path = "config.yaml"
     if os.path.exists(config_path):
         try:
@@ -21,10 +13,11 @@ def load_user_credentials():
                 config = yaml.load(file, Loader=SafeLoader)
                 return config.get("users", {})
         except Exception as e:
-            st.error(f"⚠️ Error loading config.")
+            st.error(f"⚠️ Error loading config: {e}")
             return {}
-    
-    return {}
+    else:
+        st.error("⚠️ Config file (config.yaml) not found.")
+        return {}
 
 def hash_password(password):
     """Create a simple hash of the password"""
@@ -54,6 +47,7 @@ def show_login_form():
             if verify_credentials(username, password):
                 st.session_state["authenticated"] = True
                 st.session_state["username"] = username
+                st.session_state["display_name"] = load_user_credentials().get(username, {}).get("name", username)
                 st.rerun()
             else:
                 st.error("❌ Incorrect username or password. Please try again.")
@@ -63,6 +57,7 @@ def logout():
     if st.sidebar.button("Logout"):
         st.session_state["authenticated"] = False
         st.session_state["username"] = None
+        st.session_state["display_name"] = None
         st.rerun()
 
 def initialize_auth_state():
@@ -71,6 +66,8 @@ def initialize_auth_state():
         st.session_state["authenticated"] = False
     if "username" not in st.session_state:
         st.session_state["username"] = None
+    if "display_name" not in st.session_state:
+        st.session_state["display_name"] = None
 
 def check_authentication():
     """Check if user is authenticated and show login if not"""

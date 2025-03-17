@@ -24,7 +24,7 @@ if not check_authentication():
     st.stop()
 
 # Show welcome and logout in sidebar
-st.sidebar.success(f"Welcome, {st.session_state['username']}! 🎉")
+st.sidebar.success(f"Welcome, {st.session_state.get('display_name', st.session_state['username'])}! 🎉")
 logout()
 
 # ===================================
