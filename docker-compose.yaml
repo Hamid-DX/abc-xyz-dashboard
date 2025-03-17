@@ -8,9 +8,10 @@ services:
     container_name: abc-xyz-dashboard
     ports:
       - "8501:8501"
+      - "8502:8502"
     volumes:
-      - ./data:/app/data
+      - ./:/app  # Mount the entire project directory
     environment:
       - PYTHONUNBUFFERED=1
-    stdin_open: true
-    tty: true
+    restart: unless-stopped
+    command: streamlit run app.py  # Set the default command to run your app
