@@ -7,8 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: abc-xyz-dashboard
     ports:
-      - "8501:8501"
-      - "8502:8502"
+      - "8502:8501"
     volumes:
       - ./:/app  # Mount the entire project directory
     environment:
