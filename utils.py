@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 def validate_data(df, required_columns):
     """Validate that DataFrame contains required columns"""
@@ -12,7 +13,7 @@ def validate_data(df, required_columns):
 
 def filter_by_territory(df, territory):
     """Filter DataFrame to show only data for selected territory"""
-    return df[df["Territory"] == territory]
+    return df[df["TERRITORY"] == territory]
 
 def initialize_page():
     """Initialize page configuration"""
@@ -21,3 +22,14 @@ def initialize_page():
         page_icon="📊",
         layout="wide",
     )
+    
+def check_parquet_file(uploaded_file):
+    """Check if the uploaded file is a valid parquet file"""
+    try:
+        # Try to read the first few rows
+        df = pd.read_parquet(uploaded_file)
+        # If it succeeds and returns a DataFrame, it's likely a valid parquet file
+        return True, df
+    except Exception as e:
+        # If an error occurs, it's not a valid parquet file
+        return False, str(e)

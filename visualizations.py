@@ -1,15 +1,21 @@
 import streamlit as st
 import plotly.express as px
+import plotly.graph_objects as go
 from st_aggrid import AgGrid, GridOptionsBuilder
+import pandas as pd
 
 @st.cache_data
 def create_bar_chart(df):
     """Create a bar chart of total revenue by inventory item"""
+    # Sort by revenue descending
+    df_sorted = df.sort_values("TOTAL_REVENUE", ascending=False).head(15)
+    
     return px.bar(
-        df, 
-        x="Inventory Name", 
-        y="Total_revenue", 
-        title="Total Revenue of Selected Category"
+        df_sorted, 
+        x="INVENTORY", 
+        y="TOTAL_REVENUE", 
+        title="Total Revenue by Inventory (Top 15)",
+        labels={"INVENTORY": "Inventory Item", "TOTAL_REVENUE": "Total Revenue"}
     )
 
 def display_pivot_table(pivot_df):
@@ -55,3 +61,26 @@ def display_revenue_metrics(overall_revenue, segment_revenue, revenue_share):
 
     with col3:
         st.metric(label="📊 Revenue Share [Percentage]", value=f"{revenue_share:.1f}%")
+
+@st.cache_data
+def create_date_distribution_chart(df):
+    """Create a chart showing data distribution by month"""
+    # Extract month and year and count records
+    df['month_year'] = df['DN_DELIVERY_DT'].dt.strftime('%Y-%m')
+    monthly_counts = df.groupby('month_year').size().reset_index(name='count')
+    
+    # Sort by date
+    monthly_counts = monthly_counts.sort_values('month_year')
+    
+    # Create the chart
+    fig = px.bar(
+        monthly_counts,
+        x='month_year',
+        y='count',
+        title='Data Distribution by Month',
+        labels={'month_year': 'Month-Year', 'count': 'Record Count'}
+    )
+    
+    fig.update_layout(xaxis_tickangle=-45)
+    
+    return fig

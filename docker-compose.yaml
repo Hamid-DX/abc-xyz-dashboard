@@ -7,10 +7,12 @@ services:
       dockerfile: Dockerfile
     container_name: abc-xyz-dashboard
     ports:
-      - "8502:8501"
+      - "8502:8501"  # Streamlit port
+      - "8888:8888"  # Jupyter port
     volumes:
       - ./:/app  # Mount the entire project directory
     environment:
       - PYTHONUNBUFFERED=1
+    tty: true
+    stdin_open: true
     restart: unless-stopped
-    command: streamlit run app.py  # Set the default command to run your app
